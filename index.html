@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSEPI Sarl — Équipements Agroalimentaires & Froid Industriel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545;
+    --ice:#E4EEF3;
+    --steel:#5C7A94;
+    --ember:#E1622F;
+    --white:#FFFFFF;
+    --line: rgba(11,37,69,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--ice);
+    color:var(--navy);
+    line-height:1.5;
+  }
+  .display{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 6%;
+    background:rgba(228,238,243,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Big Shoulders Display'; font-weight:800; font-size:1.4rem; letter-spacing:0.03em;}
+  .logo span{color:var(--ember);}
+  nav a{
+    color:var(--navy); text-decoration:none; margin-left:28px; font-size:0.92rem; font-weight:500;
+  }
+  nav a:hover{color:var(--ember);}
+  .cta-btn{
+    background:var(--ember); color:var(--white); padding:11px 22px; border-radius:2px;
+    text-decoration:none; font-weight:600; font-size:0.9rem; letter-spacing:0.02em;
+    transition:background 0.2s;
+  }
+  .cta-btn:hover{background:#c94f21;}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:110px 6% 90px;
+    background:
+      linear-gradient(100deg, var(--navy) 38%, rgba(11,37,69,0.78) 62%, rgba(11,37,69,0.55) 100%),
+      url('https://lh3.googleusercontent.com/place-photos/AG9NLjACTWIEcIKyq6IQ-oQBfB9IhzgvbtADnIdXvWObxewLhZ3Xr0BtqPx07q94fbWoFWYfv3LedZ7bgsUS4fHMg0uFmANf1b-Qtr9bhow3-DgCgyyFzG6Fio51NksPUhfjepo6lMZFNA5MbWJ9M_yYMwHX=s1600') right center / cover no-repeat;
+    color:var(--ice);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(228,238,243,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(228,238,243,0.045) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image: radial-gradient(circle at 75% 30%, black, transparent 70%);
+  }
+  .hero-inner{position:relative; max-width:640px;}
+  .eyebrow{font-family:'IBM Plex Mono'; color:var(--ember); font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px; display:block;}
+  h1.display{font-size:clamp(2.6rem, 5.5vw, 4.4rem); line-height:0.98; margin-bottom:24px;}
+  .hero p.lede{font-size:1.15rem; color:#C7D6E0; max-width:520px; margin-bottom:36px;}
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .cta-ghost{
+    border:1px solid rgba(228,238,243,0.35); color:var(--ice); padding:11px 22px;
+    text-decoration:none; font-weight:500; font-size:0.9rem; border-radius:2px;
+  }
+  .cta-ghost:hover{border-color:var(--ice);}
+
+  /* GAUGE — signature element */
+  .gauge-wrap{
+    position:relative; max-width:900px; margin:0 6% -1px;
+    padding:0 0 0 0;
+  }
+  .gauge{
+    display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px;
+    background:var(--white); border:1px solid var(--line); padding:22px 26px;
+    transform:translateY(-46px);
+    box-shadow: 0 18px 40px -20px rgba(11,37,69,0.35);
+  }
+  .gauge-label{font-family:'IBM Plex Mono'; font-size:0.78rem; color:var(--steel); white-space:nowrap;}
+  .gauge-label b{display:block; color:var(--navy); font-size:1.05rem; font-weight:600;}
+  .gauge-track{
+    position:relative; height:8px; border-radius:4px;
+    background:linear-gradient(90deg, #2E6FA3 0%, #E4EEF3 45%, #F0B98A 70%, var(--ember) 100%);
+  }
+  .gauge-track::after{
+    content:"";
+    position:absolute; top:50%; left:0; width:14px; height:14px; border-radius:50%;
+    background:var(--navy); border:3px solid var(--white); transform:translate(-40%,-50%);
+    animation:slide 5s ease-in-out infinite alternate;
+  }
+  @keyframes slide{ from{left:2%;} to{left:98%;} }
+  @media (prefers-reduced-motion: reduce){ .gauge-track::after{animation:none; left:50%;} }
+
+  /* SECTIONS */
+  section{padding:70px 6%;}
+  .section-head{max-width:600px; margin-bottom:44px;}
+  .section-head .eyebrow{color:var(--ember);}
+  .section-head h2.display{font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy);}
+
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:820px){ .grid-3{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white); border:1px solid var(--line); padding:30px 26px;
+  }
+  .card .num{font-family:'IBM Plex Mono'; color:var(--ember); font-size:0.85rem; display:block; margin-bottom:14px;}
+  .card h3{font-family:'Big Shoulders Display'; font-weight:600; font-size:1.35rem; text-transform:uppercase; margin-bottom:10px;}
+  .card p{color:var(--steel); font-size:0.95rem;}
+
+  .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+  }
+  @media (max-width:820px){ .split{grid-template-columns:1fr;} }
+  .stat-row{display:flex; gap:40px; margin-top:28px; flex-wrap:wrap;}
+  .stat b{font-family:'Big Shoulders Display'; font-size:2.2rem; display:block; color:var(--navy);}
+  .stat span{font-family:'IBM Plex Mono'; font-size:0.78rem; color:var(--steel); text-transform:uppercase;}
+  .swatch{
+    aspect-ratio:4/3; background:
+      repeating-linear-gradient(135deg, var(--navy) 0 2px, transparent 2px 14px),
+      var(--white);
+    border:1px solid var(--line);
+    display:flex; align-items:flex-end; padding:22px;
+  }
+  .swatch p{font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--steel);}
+
+  footer{
+    background:var(--navy); color:#C7D6E0; padding:50px 6% 34px;
+  }
+  .foot-grid{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; border-bottom:1px solid rgba(228,238,243,0.14); padding-bottom:30px; margin-bottom:24px;}
+  footer h4{font-family:'Big Shoulders Display'; text-transform:uppercase; color:var(--ice); margin-bottom:12px; font-size:1rem;}
+  footer p, footer a{color:#9FB4C4; text-decoration:none; font-size:0.92rem;}
+  .foot-bottom{font-family:'IBM Plex Mono'; font-size:0.75rem; color:#6E8A9E; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COSE<span>PI</span></div>
+  <nav>
+    <a href="#activites">Activités</a>
+    <a href="#chiffres">Repères</a>
+    <a href="#contact" class="cta-btn">Nous contacter</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Km 3.5, Boulevard du Centenaire — Zone Industrielle, Dakar</span>
+    <h1 class="display">Du -18°C au four à pain,<br>on équipe votre industrie.</h1>
+    <p class="lede">COSEPI fournit, installe et entretient le matériel des professionnels de l'agroalimentaire sénégalais : boulangerie-pâtisserie, fabrique de glace, équipements industriels sur mesure.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="cta-btn">Demander un devis</a>
+      <a href="tel:+221776341080" class="cta-ghost">+221 77 634 10 80</a>
+    </div>
+  </div>
+</section>
+
+<div class="gauge-wrap">
+  <div class="gauge">
+    <div class="gauge-label"><b>−18°C</b>Fabrique de glace</div>
+    <div class="gauge-track"></div>
+    <div class="gauge-label" style="text-align:right"><b>+220°C</b>Fours boulangerie</div>
+  </div>
+</div>
+
+<section id="activites">
+  <div class="section-head">
+    <span class="eyebrow mono">Activités</span>
+    <h2 class="display">Trois métiers, un seul interlocuteur</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <span class="num">01 / GLACE</span>
+      <h3>Fabrication & froid industriel</h3>
+      <p>Machines à glace, chambres froides et solutions de production adaptées aux volumes des professionnels.</p>
+    </div>
+    <div class="card">
+      <span class="num">02 / BOULANGERIE</span>
+      <h3>Équipements pâtisserie & boulangerie</h3>
+      <p>Fours, pétrins, façonneuses et petit matériel pour artisans et unités de production.</p>
+    </div>
+    <div class="card">
+      <span class="num">03 / SUR MESURE</span>
+      <h3>Vente & location de matériel</h3>
+      <p>Représentation commerciale et solutions d'équipement adaptées à votre activité agroalimentaire.</p>
+    </div>
+  </div>
+</section>
+
+<section id="chiffres" style="background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="split">
+    <div>
+      <span class="eyebrow mono">Repères</span>
+      <h2 class="display" style="font-size:clamp(1.8rem,3.5vw,2.6rem); margin-top:10px;">Installés au cœur de la zone industrielle</h2>
+      <p style="color:var(--steel); margin-top:16px; max-width:440px;">Basés Km 3.5 du Boulevard du Centenaire, au centre du tissu industriel de Dakar, à quelques minutes des principaux industriels agroalimentaires.</p>
+      <div class="stat-row">
+        <div class="stat"><b>3</b><span>Domaines d'équipement</span></div>
+        <div class="stat"><b>Dakar</b><span>Zone industrielle</span></div>
+        <div class="stat"><b>SARL</b><span>Statut juridique</span></div>
+      </div>
+    </div>
+    <div class="swatch" style="background-image:url('https://lh3.googleusercontent.com/place-photos/AG9NLjBLdOJMN_oW3LINlwgNhJJ01jKeGmdmmn8yFbMxQ1nsJD_tCcU4x9z6-kUDb4Jte8dpVESLEg-WZ9wQ7rC5izRmfXcUaOfnxcOpXYURAt3DWEb2Dw2BohpQHJRycyrEMsHfP4-SANRRDEq_OT6Ezz8Q=s1200'); background-size:cover; background-position:center;">
+      <p style="background:rgba(11,37,69,0.72); color:var(--ice); padding:8px 12px; border-radius:2px;">KM 3.5 — BD. DU CENTENAIRE<br>ZONE INDUSTRIELLE, DAKAR</p>
+    </div>
+  </div>
+</section>
+
+<section id="galerie" style="padding-top:0;">
+  <div class="section-head">
+    <span class="eyebrow mono">Sur place</span>
+    <h2 class="display">Nos locaux, zone industrielle de Dakar</h2>
+  </div>
+  <div class="grid-3">
+    <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjAQ0NnH9CPvpojNTpyJHrUksAGm-E2hDtNizWukF0vH_vDLAgauyoYbo6SwCHRnjFvIA-57Y_cQyVjkZpXwNOQIeaRTaby54GhWra_rggzueqYjvyOMGlgpkdltAXKAq_RtGgX4ZM_e_zlFLIxKUMLQ=s1200" alt="Locaux COSEPI Sarl, zone industrielle de Dakar" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--line);">
+    <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjBNnBq5lO-cYRN9-39CxWxrhauU5Lb3Xp1QOGLEA8aUW-Rj2skTB5e2iLsOfLJYK14s1r76GsXTt5wGjFRylgcNmI4gEnTBajuTu_iwvGPopLj3U0f3W3VNkNEQfws3zfWdcc8KIoeDupt6Oglnhor4og=s1200" alt="Site COSEPI Sarl" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--line);">
+    <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjCAY6QsK7Xs4L-gMOY7z9aWp57hjXABrBPtwZuE1g83fc2_4PGKFauEYLFheZOSPVRUbYUFZti8r1fXuHh3dgu3G2sy8uKIx7DTFt5xsEN1VJwjv3FhBRmbmOh-qun38U8-xgjaTTqBXc4b=s1200" alt="Locaux COSEPI Sarl, Dakar" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--line);">
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head">
+    <span class="eyebrow mono">Contact</span>
+    <h2 class="display">Un projet d'équipement ?</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <span class="num">TÉL.</span>
+      <h3 style="font-size:1.1rem;">+221 77 634 10 80</h3>
+    </div>
+    <div class="card">
+      <span class="num">ADRESSE</span>
+      <h3 style="font-size:1.1rem;">Km 3.5, Bd du Centenaire, Dakar</h3>
+    </div>
+    <div class="card">
+      <span class="num">HORAIRES</span>
+      <h3 style="font-size:1.1rem;">Lun–Ven 9h–17h · Sam 9h–13h</h3>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <h4>COSEPI Sarl</h4>
+      <p style="max-width:280px;">Équipements agroalimentaires — boulangerie, pâtisserie & froid industriel.</p>
+    </div>
+    <div>
+      <h4>Zone industrielle</h4>
+      <p>Km 3.5, Bd du Centenaire<br>Dakar, Sénégal</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>+221 77 634 10 80</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© COSEPI SARL</span>
+    <span>Maquette de présentation — projet de site web</span>
+  </div>
+</footer>
+
+</body>
+</html>
